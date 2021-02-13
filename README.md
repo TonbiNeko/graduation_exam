@@ -42,19 +42,24 @@ Ruby on Rails 5.2.4
 - [ ] ユーザーレベルアップ機能  
 ***
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1Y_uC5bqlF-3VEQ9FTxqTmZwwrlexsMzc0IEtHz2Q9IY/edit?usp=sharing
-***
-## テーブル定義
-https://docs.google.com/spreadsheets/d/1ncNy5EI47fmGjjiAMwqHDfkQQERvWBq51eTvau_LJuw/edit?usp=sharing
-***
-## 画面遷移図
-https://cacoo.com/diagrams/3185G7Fo5bfzWioi/54315
-***
-## 画面ワイヤーフレーム
-https://cacoo.com/diagrams/Hz565ITBq8KMxT7c/7DADD
+https://docs.google.com/spreadsheets/d/1Y_uC5bqlF-3VEQ9FTxqTmZwwrlexsMzc0IEtHz2Q9IY/edit?usp=sharing  
+
+## テーブル定義  
+https://docs.google.com/spreadsheets/d/1ncNy5EI47fmGjjiAMwqHDfkQQERvWBq51eTvau_LJuw/edit?usp=sharing  
+
+## 画面遷移図  
+https://cacoo.com/diagrams/3185G7Fo5bfzWioi/54315  
+
+## 画面ワイヤーフレーム  
+https://cacoo.com/diagrams/Hz565ITBq8KMxT7c/7DADD  
 ***
 ## 使用予定Gem  
 * carrierwave  
 * mini_magick  
 * devise  
-* ransack
+* ransack  
+## 就業Termから少なくとも2つ技術を使用する  
+* device  
+* コメント機能  
+## カリキュラム外から１つ以上の技術を学び実装する  
+* Vue.js
