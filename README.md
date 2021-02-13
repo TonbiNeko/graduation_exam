@@ -58,6 +58,3 @@ https://cacoo.com/diagrams/Hz565ITBq8KMxT7c/7DADD
 * mini_magick  
 * devise  
 * ransack
-
-
-
