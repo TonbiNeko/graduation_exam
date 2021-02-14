@@ -65,4 +65,5 @@ https://cacoo.com/diagrams/Hz565ITBq8KMxT7c/7DADD
 * device  
 * コメント機能  
 ## カリキュラム外から１つ以上の技術を学び実装する  
-* Vue.js
+* Vue.js  
+検索画面に実装します
