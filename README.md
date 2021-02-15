@@ -40,6 +40,7 @@ Ruby on Rails 5.2.4
 - [ ] イベント検索機能  
 - [ ] イベント参加確認メール機能  
 - [ ] ユーザーレベルアップ機能  
+- [ ] コメント機能  
 ***
 ## カタログ設計
 https://docs.google.com/spreadsheets/d/1Y_uC5bqlF-3VEQ9FTxqTmZwwrlexsMzc0IEtHz2Q9IY/edit?usp=sharing  
