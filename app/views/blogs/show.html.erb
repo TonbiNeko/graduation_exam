@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @blog.content %>
+</p>
+
+<%= link_to '編集', edit_blog_path(@blog) %> |
+<%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> |
+<%= link_to '一覧画面', blogs_path %>

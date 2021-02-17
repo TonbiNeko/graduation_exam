@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ edit update ]
+  before_action :set_blog, only: %i[ edit update show ]
 
   def index
     @blogs = Blog.all
@@ -27,6 +27,8 @@ class BlogsController < ApplicationController
       render :edit, notice: "編集出来ませんでした"
     end
   end
+
+  def show; end
 
 private
   def blog_params
