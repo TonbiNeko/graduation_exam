@@ -11,11 +11,20 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    if @blog.save
-      redirect_to blogs_path, notice: "素晴らしいです！またごみ拾い記録をみんなにシェアしてくださいね！"
+    if params[:back]
+      render :new
     else
-      render :new, notice: "記録を投稿出来ませんでした"
+      if @blog.save
+        redirect_to blogs_path, notice: "素晴らしいです！またごみ拾い記録をみんなにシェアしてくださいね！"
+      else
+        render :new, notice: "投稿出来ませんでした"
+      end
     end
+  end
+
+  def confirm
+    @blog = Blog.new(blog_params)
+    render :new if @blog.invalid?
   end
 
   def edit; end
