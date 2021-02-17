@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :メイン画像 %>
+    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div class="field">
     <%= form.label :タイトル %>
     <%= form.text_field :title %>
   </div>

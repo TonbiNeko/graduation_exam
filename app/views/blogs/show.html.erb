@@ -1,4 +1,9 @@
 <p>
+  <strong>メイン画像:</strong>
+  <%= image_tag @blog.image.url if @blog.image.url.present?%>
+</p>
+
+<p>
   <strong>タイトル:</strong>
   <%= @blog.title %>
 </p>

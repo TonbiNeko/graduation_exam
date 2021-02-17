@@ -7,15 +7,16 @@
 <table>
   <thead>
     <tr>
+      <th>画像</th>
       <th>タイトル</th>
       <th>内容</th>
-      <th>画像たち</th>
     </tr>
   </thead>
 
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
+        <td><%= image_tag blog.image.url if blog.image.url.present? %></td>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
         <td><%= link_to '詳細', blog_path(blog) %></td>
