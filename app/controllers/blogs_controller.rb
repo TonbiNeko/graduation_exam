@@ -31,7 +31,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "編集が完了しました"
+      redirect_to @blog, notice: "編集が完了しました"
     else
       render :edit, notice: "編集出来ませんでした"
     end
