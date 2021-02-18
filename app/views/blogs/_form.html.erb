@@ -14,7 +14,7 @@
   <div class="field">
     <%= form.label :メイン画像 %>
     <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image if @blog.image.blank?%>
     <%= form.hidden_field :image_cache %>
   </div>
 
@@ -32,7 +32,9 @@
     <div class="field">
       <%= image_tag(image.object.image.url) if image.object.image && image.object.image.url %>
       <%= image.hidden_field :image_cache %>
+      <%= image.file_field :image if image.object.new_record? %>
     </div>
+
 
     <% unless image.object.new_record? %>
       <div>
