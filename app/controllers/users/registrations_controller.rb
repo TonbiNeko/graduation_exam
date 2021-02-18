@@ -38,8 +38,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def after_sign_up_path_for(resource)
+    user_path(current_user.id)
+  end
+  
+  def after_update_path_for(resource)
+    user_path(current_user.id)
+  end
+
+  
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
