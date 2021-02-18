@@ -13,6 +13,20 @@
   <%= @blog.content %>
 </p>
 
+<% if @blog_images.any? %>
+  <% @blog_images.each.with_index do | blog_image, i | %>
+    <h2>画像<%= i + 1 %></h2>
+    
+    <p>
+      <%= image_tag(blog_image.image.url) %>
+    </p>
+
+  <% end %>
+<% else %>
+  <h2>写真は５枚投稿出来ます</h2>
+<% end %>
+
+
 <%= link_to '編集', edit_blog_path(@blog) %> |
 <%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> |
 <%= link_to '一覧画面', blogs_path %>

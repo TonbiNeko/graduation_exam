@@ -8,11 +8,17 @@
   <%= form.hidden_field :content %>
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
+
+  <% @blog.blog_images.each do |blog_image| %>
+    <%= image_tag(blog_image.image.url) if blog_image.image && blog_image.image.url %>
+  <% end %>
+
+  <%= form.fields_for :blog_images do |blog_image| %>
+    <%= blog_image.hidden_field :image_cache %>
+  <% end %>
+
   <%= form.submit  "みんなにシェア" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
 
-<%= form_with(model:@blog, url: new_blog_path, local:true, method:"get") do |form| %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "戻る", name: "back" %>
-<% end %>
+

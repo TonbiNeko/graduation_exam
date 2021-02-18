@@ -28,6 +28,21 @@
     <%= form.text_area :content %>
   </div>
 
+  <%= form.fields_for :blog_images do |blog_image| %>
+
+    <div class="field">
+      <%= blog_image.label :画像たち%>
+      <%= blog_image.file_field :image %>
+      <%= blog_image.hidden_field :image_cache %>
+    </div>
+
+    <% unless blog_image.object.new_record? %>
+      <div>
+        <p>画像を削除<%= blog_image.check_box :_destroy, data: { confirm: '削除してよろしいですか' }%></p>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
