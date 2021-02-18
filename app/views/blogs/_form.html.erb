@@ -27,9 +27,13 @@
     <%= form.label :内容 %>
     <%= form.text_area :content %>
   </div>
+  <% if @blog.blog_images.any? %>
+    <% @blog.blog_images.each do |blog_image| %>
+      <%= image_tag(blog_image.image.url) if blog_image.image && blog_image.image.url %>
+    <% end %>
+  <% end %>
 
   <%= form.fields_for :blog_images do |blog_image| %>
-
     <div class="field">
       <%= blog_image.label :画像たち%>
       <%= blog_image.file_field :image %>
