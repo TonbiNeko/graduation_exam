@@ -37,8 +37,9 @@ class BlogsController < ApplicationController
     if @blog.blog_images.blank?
       5.times { @blog.blog_images.build }
       @blog_images = @blog.blog_images
-    elsif @blog.blog_images.count >= 1
-      @blog.blog_images.build
+    elsif @blog.blog_images.count < 5
+      (5 - @blog.blog_images.count).times { @blog.blog_images.build }
+      @blog_images = @blog.blog_images
     end
   end
 
@@ -66,7 +67,7 @@ private
                                  :content, 
                                  :image, 
                                  :image_cache,
-                                 blog_images_attributes: [:image, :image_cache],
+                                 blog_images_attributes: [:id, :blog_id, :image, :image_cache, :_destroy],
                                 )
   end
 
