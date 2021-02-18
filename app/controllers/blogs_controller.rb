@@ -6,7 +6,13 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = Blog.new
+    if params[:back]
+      @blog = Blog.new(blog_params)
+      5.times { @blog.blog_images.build }
+    else
+      @blog = Blog.new
+      5.times { @blog.blog_images.build }
+    end
   end
 
   def create
@@ -15,7 +21,7 @@ class BlogsController < ApplicationController
       render :new
     else
       if @blog.save
-        redirect_to blogs_path, notice: "素晴らしいです！またごみ拾い記録をみんなにシェアしてくださいね！"
+        redirect_to blogs_path, notice: "素晴らしいです！またごみ拾いの記録をみんなにシェアしてくださいね！"
       else
         render :new, notice: "投稿出来ませんでした"
       end
@@ -27,7 +33,15 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
 
-  def edit; end
+  def edit
+    if @blog.blog_images.blank?
+      5.times { @blog.blog_images.build }
+      @blog_images = @blog.blog_images
+    elsif @blog.blog_images.count < 5
+      (5 - @blog.blog_images.count).times { @blog.blog_images.build }
+      @blog_images = @blog.blog_images
+    end
+  end
 
   def update
     if @blog.update(blog_params)
@@ -37,7 +51,9 @@ class BlogsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @blog_images = @blog.blog_images
+  end
 
   def destroy
     @blog.destroy
@@ -46,7 +62,13 @@ class BlogsController < ApplicationController
 
 private
   def blog_params
-    params.require(:blog).permit(:title, :content, :image)
+    params.require(:blog).permit(
+                                 :title, 
+                                 :content, 
+                                 :image, 
+                                 :image_cache,
+                                 blog_images_attributes: [:id, :blog_id, :image, :image_cache, :_destroy],
+                                )
   end
 
   def set_blog
