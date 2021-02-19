@@ -2,3 +2,5 @@ ja:
   characters_minimum: 文字以上
   leave_blank_if_you_don't_want_to_change_it: 変更しない場合は空白のままにしてください
   we_need_your_current_password_to_confirm_your_changes: 更新する場合はパスワードを入力してください
+  name: 名前
+  

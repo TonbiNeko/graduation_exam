@@ -1,0 +1,30 @@
+<h2><%= @place.name %>さんのページ </h2>
+<h3><%= @place.email %></h3>
+<%= image_tag @place.image.url if @place.image.url.present?%>
+<h3><%= @place.address %></h3>
+<h3><%= @place.description %></h3>
+
+
+<div class=user_show_links>
+<%= link_to "アカウント情報の編集", edit_place_registration_path %>
+</div>
+
+<div class=user_show_links>
+<%= link_to "#{@place.name}さんのごみ拾い記録", users_path %>
+</div>
+<div class=user_show_links>
+<%= link_to "みんなのごみ拾い記録", blogs_path %>
+</div>
+
+<div class=user_show_links>
+<%= link_to "参加予定イベント一覧", "#" %>
+</div>
+<div class=user_show_links>
+<%= link_to "ごみ回収place一覧", places_path %>
+</div>
+<div class=user_show_links>
+<%= link_to "友達一覧", "#" %>
+</div>
+<div class=user_show_links>
+<%= link_to "イベント一覧", "#" %>
+</div>
