@@ -7,6 +7,7 @@
 <table>
   <thead>
     <tr>
+      <th>投稿者</th>
       <th>画像</th>
       <th>タイトル</th>
       <th>内容</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
+        <td><%= blog.user.name %></td>
         <td><%= image_tag blog.image.url if blog.image.url.present? %></td>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
