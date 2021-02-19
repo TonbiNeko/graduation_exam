@@ -6,6 +6,7 @@ Rails.application.routes.draw do
                                     sessions: 'users/sessions',
                                     passwords: 'users/passwords'}
   resources :users
+  resources :places
   root 'blogs#index'
   resources :blogs do
     collection do
