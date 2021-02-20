@@ -1,13 +1,49 @@
 <h2><%= @place.name %>さんのページ </h2>
 <h3><%= @place.email %></h3>
 <%= image_tag @place.image.url if @place.image.url.present?%>
-<h3><%= @place.address %></h3>
-<h3><%= @place.description %></h3>
+<h3>住所：<%= @place.address %></h3>
+<h3>紹介：<%= @place.description %></h3>
 
 
-<div class=user_show_links>
-<%= link_to "アカウント情報の編集", edit_place_registration_path %>
-</div>
+<% unless @rule.start_at.nil? %>
+  <p>受付開始時間：<%= @rule.start_at.strftime('%H:%M') %></p>
+<% else %>
+  <p>受付開始時間：特に指定なし<p>
+<% end %>
+
+<% unless @rule.end_at.nil? %>
+  <p>受付終了時間：<%= @rule.end_at.strftime('%H:%M') %></p>
+<% else %>
+  <p>受付終了時間：特に指定なし<p>
+<% end %>
+
+<% unless @rule.separation.blank? %>
+  <p>分別方法：<%= @rule.separation %></p>
+<% else %>
+  <p>分別方法：特に指定なし</p>
+<% end %>
+
+<% unless @rule.amount.blank? %>
+    <p>ごみの量：<%= @rule.amount %></p>
+<% else %>
+  <p>ごみの量：特に指定なし</p>
+<% end %>
+
+<% unless @rule.comment.blank? %>
+  <p>注意事項：<%= @rule.comment %></p>
+<% else %>
+  <p>注意事項：特に指定なし</p>
+<% end %>
+
+<% if current_place == @place %>
+  <h3>ごみ持ち込みルールがあれば編集画面より記載をお願いします</h3>
+
+<%= link_to "アカウント情報の編集", edit_place_registration_path(@place.id) %>|
+
+<%= link_to "#{@place.name}さん参加予定イベント一覧", "#" %>|
+
+<%= link_to "#{@place.name}さん友達一覧", "#" %>
+<% end %>
 
 <div class=user_show_links>
 <%= link_to "#{@place.name}さんのごみ拾い記録", users_path %>
@@ -17,14 +53,9 @@
 </div>
 
 <div class=user_show_links>
-<%= link_to "参加予定イベント一覧", "#" %>
-</div>
-<div class=user_show_links>
 <%= link_to "ごみ回収place一覧", places_path %>
 </div>
-<div class=user_show_links>
-<%= link_to "友達一覧", "#" %>
-</div>
+
 <div class=user_show_links>
 <%= link_to "イベント一覧", "#" %>
 </div>

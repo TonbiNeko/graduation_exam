@@ -5,14 +5,18 @@ class Places::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+    # super do |resource|
+    #   resource.build_rule
+    # end
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    resource.create_rule
+  end
 
   # GET /resource/edit
   # def edit
