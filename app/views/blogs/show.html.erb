@@ -1,3 +1,15 @@
+<div class="like" >
+  <% unless @blog.user_id == current_user.id %>
+    <% if @favorite.present? %>
+      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete %>
+      <i class="fas fa-heart fa-lg heart"></i>
+    <% else %>
+      <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post %>
+      <i class="far fa-heart fa-lg heart"></i>
+    <% end %>
+  <% end %>
+</div>
+
 <p>
   <strong>投稿者:</strong>
   <%= @blog.user.name %>
