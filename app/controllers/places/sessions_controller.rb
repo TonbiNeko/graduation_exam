@@ -25,7 +25,7 @@ class Places::SessionsController < Devise::SessionsController
   end 
   
   def after_sign_out_path_for(resource)
-    new_place_session_path
+    new_place_registration_path
   end 
 
   # If you have extra params to permit, append them to the sanitizer.

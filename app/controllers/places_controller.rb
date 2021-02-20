@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = current_place
+    @place = Place.find(params[:id])
     @rule = @place.rule
   end
 end
