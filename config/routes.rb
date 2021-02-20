@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions',
                                     passwords: 'users/passwords'}
-  resources :users
-  resources :places
+  resources :users, only: [:index, :show]
+  resources :places, only: [:index, :show]
+  resources :favorites, only: [:create, :destroy]
   root 'blogs#index'
   resources :blogs do
     collection do
