@@ -1,6 +1,9 @@
 class Place < ApplicationRecord
   mount_uploader :image, ImageUploader
-  has_one :rule
+  has_one :rule, dependent: :destroy, autosave: true
+  accepts_nested_attributes_for :rule, 
+                                allow_destroy: true,
+                                reject_if: :all_blank
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

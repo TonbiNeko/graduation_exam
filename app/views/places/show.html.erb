@@ -5,6 +5,20 @@
 <h3>紹介：<%= @place.description %></h3>
 
 
+<% if @rule.present? %>
+
+    <p>開始時間：<%= @rule.start_at %></p>
+    <p>終了時間：<%= @rule.end_at %></p>
+    <p>分別方法：<%= @rule.separation %></p>
+    <p>ごみの量：<%= @rule.amount %></p>
+    <p>注意事項：<%= @rule.comment %></p>
+
+<% else %>
+  <h3>ごみ持ち込みルールがあれば記載をお願いします</h3>
+<% end %>
+
+
+
 <div class=user_show_links>
 <%= link_to "アカウント情報の編集", edit_place_registration_path %>
 </div>

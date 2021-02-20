@@ -5,5 +5,6 @@ class PlacesController < ApplicationController
 
   def show
     @place = current_place
+    @rule = @place.rule
   end
 end

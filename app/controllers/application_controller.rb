@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     def initialize(*)
       super
       permit(:sign_up, keys: [:name, :address, :description, :image])
-      permit(:account_update, keys: [:name, :address, :description, :image])
+      permit(:account_update, keys: [:name, :address, :description, :image, rule_attributes: [:start_at, :end_at, :separation, :amount, :comment, :_destroy]])
       permit(:sign_in, keys: [:name, :address, :description, :image])
     end
   end
