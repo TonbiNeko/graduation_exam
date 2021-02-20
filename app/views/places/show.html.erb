@@ -1,8 +1,8 @@
 <h2><%= @place.name %>さんのページ </h2>
 <h3><%= @place.email %></h3>
 <%= image_tag @place.image.url if @place.image.url.present?%>
-<h3><%= @place.address %></h3>
-<h3><%= @place.description %></h3>
+<h3>住所：<%= @place.address %></h3>
+<h3>紹介：<%= @place.description %></h3>
 
 
 <div class=user_show_links>
