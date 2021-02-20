@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :devise_parameter_sanitizer, if: :devise_controller?
 
   protected
 
