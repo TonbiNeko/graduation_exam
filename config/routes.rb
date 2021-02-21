@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/create'
   devise_for :places, controllers: { registrations: 'places/registrations',
                                     sessions: 'places/sessions',
                                     passwords:     'places/passwords' }
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    resources :comments
   end
 end

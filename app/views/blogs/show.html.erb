@@ -1,11 +1,13 @@
 <div class="like" >
   <% unless @blog.user_id == current_user.id %>
     <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete %>
-      <i class="fas fa-heart fa-lg heart"></i>
+      <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
+        <i class="fas fa-heart fa-lg heart"></i>
+      <% end %>
     <% else %>
-      <%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post %>
-      <i class="far fa-heart fa-lg heart"></i>
+      <%= link_to favorites_path(blog_id: @blog.id), method: :post do %>
+        <i class="far fa-heart fa-lg heart"></i>
+      <% end %>
     <% end %>
   <% end %>
 </div>
@@ -47,3 +49,11 @@
 <%= link_to '編集', edit_blog_path(@blog) %> |
 <%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> |
 <%= link_to '一覧画面', blogs_path %>
+
+
+<div id="comments_area">
+<%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+</div>
+<%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+<%= link_to '編集', edit_blog_path(@blog) %> |
+<%= link_to '戻る', blogs_path %>

@@ -1,5 +1,7 @@
 {
   "name": "picking_up_garbage",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
 }
