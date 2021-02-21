@@ -1,13 +1,12 @@
 <div class="like" >
-  <% unless @blog.user_id == current_user.id %>
-    <% if @favorite.present? %>
-      <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
-        <i class="fas fa-heart fa-lg heart"></i>
-      <% end %>
-    <% else %>
-      <%= link_to favorites_path(blog_id: @blog.id), method: :post do %>
-        <i class="far fa-heart fa-lg heart"></i>
-      <% end %>
+  <% if @favorite.present? %>
+    <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
+      <i class="fas fa-heart fa-lg heart"></i>
+    <% end %>
+    <%= @blog.favorite_users.count %>
+  <% else %>
+    <%= link_to favorites_path(blog_id: @blog.id), method: :post do %>
+      <i class="far fa-heart fa-lg heart"></i>
     <% end %>
   <% end %>
 </div>

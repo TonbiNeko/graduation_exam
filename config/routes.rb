@@ -7,7 +7,11 @@ Rails.application.routes.draw do
                                     sessions: 'users/sessions',
                                     passwords: 'users/passwords'}
   resources :users, only: [:index, :show]
-  resources :places, only: [:index, :show]
+  resources :places, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
   resources :favorites, only: [:create, :destroy]
   root 'blogs#index'
   resources :blogs do
