@@ -49,3 +49,11 @@
 <%= link_to '編集', edit_blog_path(@blog) %> |
 <%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> |
 <%= link_to '一覧画面', blogs_path %>
+
+
+<div id="comments_area">
+<%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+</div>
+<%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+<%= link_to '編集', edit_blog_path(@blog) %> |
+<%= link_to '戻る', blogs_path %>
