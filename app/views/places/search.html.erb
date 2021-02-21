@@ -1,14 +1,4 @@
-<h1>ごみ回収場所一覧</h1>
-
-<h1>検索</h1>
-
-<%= search_form_for @q, url: search_places_path do |f| %>
-  <%= f.label :address_cont, '場所・お店' %>
-  <%= f.search_field :address_cont %>
-  <br>
-  <%= f.submit '検索' %>
-<% end %>
-
+<h1>検索結果</h1>
 <table>
   <thead>
     <tr>
@@ -19,7 +9,7 @@
   </thead>
 
   <tbody>
-    <% @places.each do |place| %>
+    <% @results.each do |place| %>
       <tr>
         <td><%= image_tag place.image.url if place.image.url.present? %></td>
         <td><%= place.name %></td>
