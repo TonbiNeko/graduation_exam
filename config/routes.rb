@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    resources :comments
   end
 end
