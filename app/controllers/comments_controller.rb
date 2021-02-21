@@ -40,6 +40,7 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:blog_id, :content)
+      .merge(user_id: current_user.id)
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
