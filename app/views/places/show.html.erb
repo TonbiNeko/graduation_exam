@@ -5,25 +5,25 @@
 <h3>紹介：<%= @place.description %></h3>
 
 
-<% unless @rule.start_at.nil? %>
+<% if @rule.start_at.present? %>
   <p>受付開始時間：<%= @rule.start_at.strftime('%H:%M') %></p>
 <% else %>
-  <p>受付開始時間：特に指定なし<p>
+  <p>受付開始時間：特に指定なし</p>
 <% end %>
 
-<% unless @rule.end_at.nil? %>
+<% if @rule.end_at.present? %>
   <p>受付終了時間：<%= @rule.end_at.strftime('%H:%M') %></p>
 <% else %>
-  <p>受付終了時間：特に指定なし<p>
+  <p>受付終了時間：特に指定なし</p>
 <% end %>
 
-<% unless @rule.separation.blank? %>
+<% if @rule.separation.present? %>
   <p>分別方法：<%= @rule.separation %></p>
 <% else %>
   <p>分別方法：特に指定なし</p>
 <% end %>
 
-<% unless @rule.amount.blank? %>
+<% if @rule.amount.present? %>
     <p>ごみの量：<%= @rule.amount %></p>
 <% else %>
   <p>ごみの量：特に指定なし</p>
