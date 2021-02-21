@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
     @results = @q.result
   end
   private
-  
+
   def set_q
     @q = Place.ransack(params[:q])
   end
