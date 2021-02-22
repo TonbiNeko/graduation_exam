@@ -15,7 +15,7 @@ class Places::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    resource.create_rule
+    resource.create_rule if resource.persisted?
   end
 
   # GET /resource/edit
