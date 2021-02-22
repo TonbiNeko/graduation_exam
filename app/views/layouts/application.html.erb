@@ -11,26 +11,59 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "ブログ投稿", blogs_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% elsif place_signed_in? %>
-      <%= link_to "マイページ", place_path(current_place.id) %>
-      <%= link_to "ブログ投稿", blogs_path %>
-      <%= link_to "ログアウト", destroy_place_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
-
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <%= link_to "NO MORE garbo", blogs_path, class: "nav-link no_more_garbo" %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          LINK
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "マイページ", user_path(current_user.id), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ブログ投稿一覧", blogs_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% elsif place_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "場所・お店のページ", place_path(current_place.id), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ブログ投稿一覧", blogs_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_place_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "一般ユーザー新規登録", new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "一般ユーザーログイン", new_user_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "場所・お店アカウント登録の方はこちら", new_place_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "場所・お店ログインの方はこちら", new_place_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
     <%= yield %>
+
+    <footer>
+      <p>no more garbo by TonbiNeko</p>
+      <p>DIC graduation app</p>
+    </footer>
   </body>
 </html>

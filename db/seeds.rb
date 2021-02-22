@@ -36,9 +36,9 @@ end
 
 User.first.blogs.create!(
   title: Faker::Games::WorldOfWarcraft.quote,
-  content: "#{Faker::Games::WorldOfWarcraft.quote},
-            #{Faker::Games::WorldOfWarcraft.quote},
-            #{Faker::Games::WorldOfWarcraft.quote}!!!"
+  content: "#{Faker::Games::WorldOfWarcraft.quote}
+    #{Faker::Games::WorldOfWarcraft.quote}
+    #{Faker::Games::WorldOfWarcraft.quote}"
 )
 
 # blog1 = User.second.blog.new(...)
