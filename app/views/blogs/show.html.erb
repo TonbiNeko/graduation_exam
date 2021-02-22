@@ -1,58 +1,83 @@
-<div class="like" >
-  <% if @favorite.present? %>
-    <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
-      <i class="fas fa-heart fa-lg heart"></i>
-    <% end %>
-    <%= @blog.favorite_users.count %>
-  <% else %>
-    <%= link_to favorites_path(blog_id: @blog.id), method: :post do %>
-      <i class="far fa-heart fa-lg heart"></i>
-    <% end %>
-  <% end %>
-</div>
-
-<p>
-  <strong>投稿者:</strong>
-  <%= @blog.user.name %>
-</p>
-
-<p>
-  <strong>タイトル:</strong>
-  <%= @blog.title %>
-</p>
-
-<p>
-  <strong>メイン画像:</strong>
-  <%= image_tag @blog.image.url if @blog.image.url.present?%>
-</p>
-
-<p>
-  <strong>内容:</strong>
-  <%= @blog.content %>
-</p>
-
-<% if @blog_images.any? %>
-  <% @blog_images.each.with_index do | blog_image, i | %>
-    <h2>画像<%= i + 1 %></h2>
+<div class="row">
+  <div class="col-md-3">
+    <div class="blog_user_info">
+      <i class="fas fa-user-alt"></i><%= "#{@blog.user.name}さんのごみ拾い記録" %>
+    </div>
+    <div class="blog_user_info">
+      <%= image_tag(@blog.user.image.url, class: "profile_image") %>
+    </div>
+    <div class="blog_user_info">
+      <%= link_to "#{@blog.user.name}さんの投稿一覧", users_path(@blog.user.id), class: "btn btn-outline-success" %>
+    </div>
+  </div>
+  
+  <div class="col-md-9">
+    <div class="like" >
+      <% if @favorite.present? %>
+        <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
+          <i class="fas fa-heart fa-lg heart"></i>
+        <% end %>
+        <%= @blog.favorite_users.count %>
+      <% else %>
+        <%= link_to favorites_path(blog_id: @blog.id), method: :post do %>
+          <i class="far fa-heart fa-lg heart"></i>
+        <% end %>
+      <% end %>
+    </div>
     
-    <p>
-      <%= image_tag(blog_image.image.url) %>
-    </p>
+    <div class="blog_content">
+      <strong><%= @blog.title %></strong>
+    </div>
+    
+    <% if @blog.image.url.present?%>
+      <div class="blog_main_image">
+        <%= (image_tag @blog.image.url, class: "user_blogs_image") %>
+      </div>
+    <% end %>
 
-  <% end %>
-<% else %>
-  <h2>写真は５枚投稿出来ます</h2>
-<% end %>
+    <p class="blog_content"><%= @blog.content %></p>
 
+    <% if @blog_images.any? %>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= image_tag(@blog_images.first.image.url, class: "d-block w-100") %>
+          </div>
 
-<%= link_to '編集', edit_blog_path(@blog) %> |
-<%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %> |
-<%= link_to '一覧画面', blogs_path %>
+          <% @blog_images[1..].each do |blog_image| %>
+            <div class="carousel-item">
+              <%= image_tag(blog_image.image.url, class: "d-block w-100") %>
+            </div>
+          <% end %>
 
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    <% elsif current_user == @blog.user && @blog_images.blank? %>
+      <h3>写真はあと５枚投稿出来ます</h3>
+    <% end %>
 
-<div id="comments_area">
-<%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    <% if current_user == @blog.user %>
+      <div class="blog_links">
+        <%= link_to '編集', edit_blog_path(@blog), class: "btn btn-outline-secondary btn-block" %>
+        <%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-outline-danger btn-block" %>
+      </div>
+    <% end %>
+
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+
+    <div class="blog_links">
+      <%= link_to '一覧画面に戻る', blogs_path, class: "btn btn-success btn-block" %>
+    </div>
+  </div>
 </div>
-<%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
-<%= link_to '編集', edit_blog_path(@blog) %> |
-<%= link_to '戻る', blogs_path %>

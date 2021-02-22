@@ -21,6 +21,9 @@
         <% elsif blog.favorite_users.count == 0 %>
           <i class="far fa-heart fa-lg heart"></i>
         <% end %>
+        <% if blog.blog_images.any? %>
+          <i class="fas fa-camera"></i><%= blog.blog_images.count %>
+        <% end %>
         <%= link_to '詳細', blog_path(blog), class: "btn btn-outline-success" %>
         <% if current_user == blog.user %>
           <%= link_to '編集', edit_blog_path(blog), class: "btn btn-outline-warning" %>
