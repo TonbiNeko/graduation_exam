@@ -43,3 +43,6 @@ li {
 header {
   padding: 10px;
 }
+.nav-item-name {
+  text-align: right;
+}
