@@ -25,8 +25,14 @@ body {
 footer {
   text-align: center;
   font-size: 0.9rem;
-  background-color: coral;
+  background-color: chocolate;
   color: white;
   margin-top: 20px;
   padding: 10px;
+}
+li {
+  list-style: none;
+}
+.btn {
+  margin: 5px;
 }
