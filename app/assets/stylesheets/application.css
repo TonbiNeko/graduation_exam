@@ -15,7 +15,7 @@
  *= require_self
  */
 
- html {
+html {
   position: relative;
   min-height: 100%;
 }
@@ -35,4 +35,11 @@ li {
 }
 .btn {
   margin: 5px;
+}
+.nav-item {
+  margin: 10px;
+  font-size: 0.9rem;
+}
+header {
+  padding: 10px;
 }

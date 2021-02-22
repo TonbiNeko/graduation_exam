@@ -1,29 +1,41 @@
-<h2>Log in</h2>
+<div class="container registrations_new">
+  <h5 class="app_instractions">NO MORE GARBO はごみ拾いを気軽に始められるアプリです</h5>
+  <h5 class="app_instractions">ごみ拾いする人とごみを回収してくれる場所・お店をつなぎます</h5>
+  <div class="form">
+    <strong>場所・お店の方</strong>
+    <h1>Log in</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: "btn btn-warning" %>
+      </div>
+    <% end %>
+    <p>新規ご登録済の方は</p>
+    <div class="registrations">
+      <%= link_to "新規登録", new_place_registration_path, class: "btn btn-warning" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="registrations">
+      <%= link_to "一般ユーザー新規ご登録の方はこちら", new_user_registration_path, class: "btn btn-light" %>
+    </div>
+    <div class="registrations">
+      <%= link_to "一般ユーザーログインの方はこちら", new_user_session_path, class: "btn btn-light" %>
+    </div>
   </div>
-<% end %>
-
-<%= render "places/shared/links" %>
-<%= link_to "一般ユーザー新規ご登録の方はこちら", new_user_registration_path %>
-<br>
-<%= link_to "一般ユーザーログインの方はこちら", new_user_session_path %>
+</div>
