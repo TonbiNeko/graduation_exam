@@ -9,22 +9,22 @@
   </li>
   <li class="col-md-5">
     <div class="user_links">
-      <%= link_to "#{@user.name}さんのごみ拾い記録", users_path, class: "user_show_links" %>
+      <%= link_to "ごみ回収place一覧", places_path, class: "user_link" %>
     </div>
     <div class="user_links">
-      <%= link_to "みんなのごみ拾い記録", blogs_path, class: "user_show_links" %>
+      <%= link_to "#{@user.name}さんのごみ拾い記録", users_path, class: "user_link" %>
     </div>
     <div class="user_links">
-      <%= link_to "参加予定イベント一覧", "#", class: "user_show_links" %>
+      <%= link_to "みんなのごみ拾い記録", blogs_path, class: "user_link" %>
     </div>
     <div class="user_links">
-      <%= link_to "ごみ回収place一覧", places_path, class: "user_show_links" %>
+      <%= link_to "参加予定イベント一覧", "#", class: "user_link" %>
     </div>
     <div class="user_links">
-      <%= link_to "友達一覧", "#", class: "user_show_links" %>
+      <%= link_to "イベント一覧", "#", class: "user_link" %>
     </div>
     <div class="user_links">
-      <%= link_to "イベント一覧", "#", class: "user_show_links" %>
+      <%= link_to "友達一覧", "#", class: "user_link" %>
     </div>
   </li>
 </ul>

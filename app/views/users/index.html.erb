@@ -1,26 +1,25 @@
-<h1><%= @user.name %>さんのごみ拾い記録一覧</h1>
+<h2><%= @user.name %>さんのごみ拾い記録一覧</h2>
+<br>
+<%= link_to '新しく記録を投稿する', new_blog_path, class: "btn btn-outline-warning" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>画像</th>
-      <th>タイトル</th>
-      <th>内容</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= image_tag blog.image.url if blog.image.url.present? %></td>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= link_to '詳細', blog_path(blog) %></td>
-
-        <td><%= link_to '編集', edit_blog_path(blog) %></td>
-        <td><%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @blogs.each do |blog| %>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <%= (image_tag blog.image.url, class: "user_blogs_image") if blog.image.url.present? %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body user_blogs_content">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text"><%= blog.created_at %></p>
+          <p class="card-text"><%= blog.content %></p>
+        </div>
+        <%= link_to '詳細', blog_path(blog), class: "btn btn-outline-success" %>
+        <% if current_user == blog.user %>
+          <%= link_to '編集', edit_blog_path(blog), class: "btn btn-outline-warning" %>
+          <%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-outline-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@
   padding: 10px;
   text-align: left;
 }
-.user_show_links {
+.user_link {
   font-size: 1.2rem;
   color: rgb(63, 60, 60);
 }
@@ -16,4 +16,10 @@ a:hover {
 }
 .user_info {
   padding: 15px;
+}
+.user_blogs_content {
+  text-align: left;
+}
+.user_blogs_image {
+  height: 100%;
 }
