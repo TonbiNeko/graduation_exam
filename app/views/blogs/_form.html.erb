@@ -11,26 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :メイン画像 %>
-    <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-    <%= form.file_field :image if @blog.image.blank?%>
-    <%= form.hidden_field :image_cache %>
+  <div class="row">
+    <div class="col-md-6">
+      <strong><%= form.label :メイン画像 %></strong>
+      <p>（一覧画面に表示される画像です）</p>
+      <p><%= image_tag(@blog.image.url, class: "blog_main_image") if @blog.image && @blog.image.url %></p>
+
+      <%= form.file_field :image %>
+
+      <%= form.hidden_field :image_cache %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="field">
+        <strong><%= form.label :タイトル %></strong>
+        <p><%= form.text_field :title, size: "30x5" %></p>
+      </div>
+
+      <div class="field">
+        <strong><%= form.label :内容 %></strong>
+        <p><%= form.text_area :content, size: "30x10" %></p>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :タイトル %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :内容 %>
-    <%= form.text_area :content %>
-  </div>
-
+  <p>写真は５枚まで投稿できます</p>
   <%= form.fields_for :blog_images do |image| %>
     <div class="field">
-      <%= image_tag(image.object.image.url) if image.object.image && image.object.image.url %>
+      <%= image_tag(image.object.image.url, class: "blog_images") if image.object.image && image.object.image.url %>
       <%= image.hidden_field :image_cache %>
       <%= image.file_field :image if image.object.new_record? %>
     </div>
@@ -43,7 +51,7 @@
     <% end %>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="blog_links">
+    <%= form.submit class: "btn btn-success btn-block" %>
   </div>
 <% end %>

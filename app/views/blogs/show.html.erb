@@ -28,6 +28,8 @@
     <div class="blog_content">
       <strong><%= @blog.title %></strong>
     </div>
+
+    <p><%= @blog.created_at.strftime("%Y-%m-%d %H:%M") %></p>
     
     <% if @blog.image.url.present?%>
       <div class="blog_main_image">
@@ -70,10 +72,13 @@
         <%= link_to '削除', blog_path(@blog), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-outline-danger btn-block" %>
       </div>
     <% end %>
+    
 
-    <div id="comments_area">
-      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
-    </div>
+      <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+      </div>
+
+
     <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
 
     <div class="blog_links">

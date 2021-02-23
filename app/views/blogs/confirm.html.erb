@@ -1,24 +1,37 @@
-<h3>以下の内容でよろしいですか？</h3>
+<h3>投稿確認画面</3>
+<h5>以下の内容でよろしいですか？</h5>
 
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
 
-  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <p>タイトル:<%= @blog.title %></p>
-  <p>本文:<%= @blog.content %></p>
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <%= image_tag(@blog.image.url, class: "confirm_main_image") if @blog.image && @blog.image.url %>
+      <%= form.hidden_field :image_cache %>
+      <%= form.hidden_field :title %>
+      <%= form.hidden_field :content %>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      
+      <%= form.submit  "みんなにシェア", class: "btn btn-warning" %>
+      <%= form.submit "戻る", name: 'back', class: "btn btn-outline-info" %>
+      <div class="card">
+        <div class="card-body">
+          <strong>タイトル</strong>
+          <p><%= @blog.title %></p>
+          <strong>本文</strong>
+          <p><%= @blog.content %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <% @blog.blog_images.each do |blog_image| %>
-    <%= image_tag(blog_image.image.url) if blog_image.image && blog_image.image.url %>
+    <%= image_tag(blog_image.image.url, class: "confirm_sub_images") if blog_image.image && blog_image.image.url %>
   <% end %>
 
   <%= form.fields_for :blog_images do |blog_image| %>
     <%= blog_image.hidden_field :image_cache %>
   <% end %>
-
-  <%= form.submit  "みんなにシェア" %>
-  <%= form.submit "戻る", name: 'back' %>
 <% end %>
 
 

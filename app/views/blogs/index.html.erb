@@ -6,13 +6,13 @@
   <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <%= (image_tag blog.image.url, class: "user_blogs_image") if blog.image.url.present? %>
+        <%= (image_tag blog.image.url, class: "index_blogs_image") if blog.image.url.present? %>
       </div>
       <div class="col-md-8">
         <div class="card-body user_blogs_content">
           <p><i class="fas fa-user-alt"></i><%= blog.user.name %></p>
           <h5 class="card-title"><%= blog.title %></h5>
-          <p class="card-text"><%= blog.created_at %></p>
+          <p class="card-text"><%= blog.created_at.strftime("%Y-%m-%d %H:%M") %></p>
           <p class="card-text"><%= blog.content %></p>
         </div>
         <% if blog.favorite_users.count >= 1 %> 
