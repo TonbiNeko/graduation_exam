@@ -4,10 +4,10 @@
       <i class="fas fa-user-alt"></i><%= "#{@blog.user.name}さんのごみ拾い記録" %>
     </div>
     <div class="blog_user_info">
-      <%= image_tag(@blog.user.image.url, class: "profile_image") %>
+      <%= image_tag(@blog.user.image.url, class: "profile_image") if @blog.user.image.present? %>
     </div>
     <div class="blog_user_info">
-      <%= link_to "#{@blog.user.name}さんの投稿一覧", user_path(@blog.user.id), class: "btn btn-outline-success" %>
+      <%= link_to "#{@blog.user.name}さんのページ", user_path(@blog.user.id), class: "btn btn-outline-success" %>
     </div>
   </div>
   
