@@ -7,7 +7,7 @@
       <%= image_tag(@blog.user.image.url, class: "profile_image") %>
     </div>
     <div class="blog_user_info">
-      <%= link_to "#{@blog.user.name}さんの投稿一覧", users_path(@blog.user.id), class: "btn btn-outline-success" %>
+      <%= link_to "#{@blog.user.name}さんの投稿一覧", user_path(@blog.user.id), class: "btn btn-outline-success" %>
     </div>
   </div>
   
