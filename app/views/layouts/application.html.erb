@@ -28,6 +28,9 @@
                 <%= link_to "ブログ投稿一覧", blogs_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
+                <%= link_to "ごみ回収place一覧", places_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>
             <% elsif place_signed_in? %>
@@ -36,6 +39,9 @@
               </li>
               <li class="nav-item">
                 <%= link_to "ブログ投稿一覧", blogs_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ごみ回収place一覧", places_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_place_session_path, method: :delete, class: "nav-link" %>
