@@ -4,13 +4,13 @@
 <h3>住所：<%= @place.address %></h3>
 <h3>紹介：<%= @place.description %></h3>
 
-<% unless @rule.start_at.strftime('%H:%M') == '00:00' %>
+<% if @rule.start_at.present? && @rule.start_at.strftime('%H:%M') != '00:00' %>
   <p>受付開始時間：<%= @rule.start_at.strftime('%H:%M') %></p>
 <% else %>
   <p>受付開始時間：特に指定なし</p>
 <% end %>
 
-<% unless @rule.end_at.strftime('%H:%M') == '00:00' %>
+<% if @rule.end_at.present? && @rule.end_at.strftime('%H:%M') != '00:00' %>
   <p>受付終了時間：<%= @rule.end_at.strftime('%H:%M') %></p>
 <% else %>
   <p>受付終了時間：特に指定なし</p>
