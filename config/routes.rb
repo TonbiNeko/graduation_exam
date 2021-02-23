@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: [:create, :destroy]
-  root 'blogs#index'
+  root 'places#index'
   resources :blogs do
     collection do
       post :confirm
