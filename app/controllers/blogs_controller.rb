@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!, only: %i[ new edit update destroy ]
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.sort_desc.page(params[:page]).per(8)
   end
 
   def new
