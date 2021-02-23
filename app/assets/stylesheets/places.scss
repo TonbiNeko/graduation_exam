@@ -1,3 +1,51 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search_forms {
+  text-align: left;
+}
+.search_button {
+  text-align: center;
+}
+.fa-camera {
+  padding: 20px;
+}
+.place_index_card {
+  margin: auto;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.card-body {
+  text-align: left;
+}
+.place_index_show_btn {
+  margin: auto;
+}
+.place_info {
+  padding: 15px;
+}
+.profile_image {
+  height: 200px;
+}
+.place_rules {
+  text-align: left;
+  padding-left: 80px;
+}
+.place_show_links {
+  margin: auto;
+}
+.place_links {
+  padding: 15px;
+}
+.place_link {
+  font-size: 1.2rem;
+  color: rgb(63, 60, 60);
+}
+.rules_info {
+  color: red;
+  padding: 15px;
+}
+.index_place_image {
+  height: 180px;
+}

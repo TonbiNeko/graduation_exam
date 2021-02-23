@@ -1,92 +1,106 @@
-<h2>場所・お店　編集画面</h2>
+<strong>場所・お店</strong>
+<h2>アカウント編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "places/shared/error_messages", resource: resource %>
+  <div class="row edit_account_infos">
+    <div class="col-md-6 edit_account_info">
+      <div class="field">
+        <strong><%= f.label :name %></strong><br />
+        <%= f.text_field :name %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+      <div class="field">
+        <strong><%= f.label :email %></strong><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field">
+        <strong><%= f.label :address %></strong><br />
+        <%= f.text_field :address %>
+     </div>
 
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
+      <div class="field">
+        <strong><%= f.label :description %></strong><br />
+        <%= f.text_field :description %>
+      </div>
 
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image, class: "form-control" %>
-    <%= image_tag(@place.image.url) if @place.image && @place.image.url %>
-  </div>
+      <div class="field">
+        <strong><%= f.label :password %></strong><br />
+        <i>(<%= t("leave_blank_if_you_don't_want_to_change_it") %>)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> (<%= t("characters_minimum") %>)</em>
+        <% end %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(<%= t("leave_blank_if_you_don't_want_to_change_it") %>)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> (<%= t("characters_minimum") %>)</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <%= f.fields_for :rule do |rule| %>
+    <div class="col-md-6 edit_account_info">
+      <div class="field">
+        <strong><%= f.label :プロフィール画像 %></strong><br />
+        <%= image_tag(@place.image.url, class: "profile_image") if @place.image && @place.image.url %>
+        <p>プロフィール画像を変更する際はファイルを選択してください</p>
+        <%= f.file_field :image %>
+      </div>
+      <%= f.fields_for :rule do |rule| %>
     
-    <div class="start_at">
-      <%= rule.label :開始時間 %>
-      <%= rule.time_select :start_at, include_blank: true %>
+        <div class="start_at">
+          <%= rule.label :開始時間 %>
+          <%= rule.time_select :start_at, include_blank: true %>
+        </div>
+    
+        <div class="end_at">
+          <%= rule.label :終了時間%>
+          <%= rule.time_select :end_at, include_blank: true %>
+        </div>
+    
+        <div class="separation">
+          <%= rule.label :分別方法 %>
+          <%= rule.text_area :separation %>
+        </div>
+    
+        <div class="amount">
+          <%= rule.label :ごみの量 %>
+          <%= rule.text_area :amount %>
+        </div>
+    
+         <div class="comment">
+          <%= rule.label :注意事項 %>
+          <%= rule.text_area :comment %>
+        </div>
+      <% end %>
     </div>
+  </div>
+  
 
-    <div class="end_at">
-      <%= rule.label :終了時間%>
-      <%= rule.time_select :end_at, include_blank: true %>
-    </div>
-
-    <div class="separation">
-      <%= rule.label :分別方法 %>
-      <%= rule.text_area :separation %>
-    </div>
-
-    <div class="amount">
-      <%= rule.label :ごみの量 %>
-      <%= rule.text_area :amount %>
-    </div>
-
-     <div class="comment">
-      <%= rule.label :注意事項 %>
-      <%= rule.text_area :comment %>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(<%= t("we_need_your_current_password_to_confirm_your_changes") %>)</i><br />
+  <div class="field edit_account_info">
+    <strong><%= f.label :current_password %></strong><br />
+    <i>(<%= t("we_need_your_current_password_to_confirm_your_changes") %>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "登録" %>
+  <div class="user_edit_btn">
+    <%= f.submit "更新", class: "btn btn-success btn-block" %>
   </div>
 <% end %>
 
-<h3>アカウント削除</h3>
+<h3 class="delete_account">アカウント削除</h3>
 
-<%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+<div class="user_edit_btn">
+  <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか？" }, method: :delete, class: "btn btn-outline-danger btn-block" %>
+</div>
+<br>
+<div class="user_edit_btn">
+  <%= link_to "戻る", :back, class: "btn btn-outline-info btn-block" %>
+</div>
 
-<%= link_to "戻る", :back %>

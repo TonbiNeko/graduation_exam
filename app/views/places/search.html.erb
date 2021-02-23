@@ -1,22 +1,30 @@
-<h1>検索結果</h1>
-<table>
-  <thead>
-    <tr>
-      <th>画像</th>
-      <th>名称</th>
-      <th>住所</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @results.each do |place| %>
-      <tr>
-        <td><%= image_tag place.image.url if place.image.url.present? %></td>
-        <td><%= place.name %></td>
-        <td><%= place.address %></td>
-        <td><%= link_to '詳細', place_path(place.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to "戻る", places_path %>
+
+<h2>検索結果</h2>
+<%= link_to "place一覧に戻る", places_path, class: "btn btn-outline-success" %>
+<div class="col-sm-9 col-md-9 place_index_card">
+  <% @results.each do |place| %> 
+    <div class="card mb-3" style="max-width: 950px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <% if place.image.url.present? %>
+            <%= image_tag place.image.url %>
+          <% else %>
+            <i class="fas fa-camera fa-5x"></i>
+            <p>NO IMAGE<p>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-home"></i><%= place.name %></h5>
+            <p class="card-text"><i class="fas fa-map-marker-alt"></i><%= place.address %></p>
+            <p class="card-text"><%= place.description %></p>
+          </div>
+        </div>
+        <div class="col-md-2 place_index_show_btn">
+          <p class="card-link"><%= link_to '詳細', place_path(place.id), class: "btn btn-success" %></P>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,25 @@
+<h2><%= @user.name %>さんのごみ拾い記録一覧</h2>
+<br>
+<%= link_to '新しく記録を投稿する', new_blog_path, class: "btn btn-outline-warning" %>
+
+<% @blogs.each do |blog| %>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <%= (image_tag blog.image.url, class: "index_blogs_image") if blog.image.url.present? %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body user_blogs_content">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <p class="card-text"><%= blog.created_at %></p>
+          <p class="card-text"><%= blog.content %></p>
+        </div>
+        <%= link_to '詳細', blog_path(blog), class: "btn btn-outline-success" %>
+        <% if current_user == blog.user %>
+          <%= link_to '編集', edit_blog_path(blog), class: "btn btn-outline-warning" %>
+          <%= link_to '削除', blog, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-outline-warning" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -2,6 +2,7 @@
   "name": "picking_up_garbage",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "jquery": "^3.5.1"
   }
 }

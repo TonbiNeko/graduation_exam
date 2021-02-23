@@ -1,60 +1,69 @@
-<h2><%= @place.name %>さんのページ </h2>
-<h3><%= @place.email %></h3>
-<%= image_tag @place.image.url if @place.image.url.present?%>
-<h3>住所：<%= @place.address %></h3>
-<h3>紹介：<%= @place.description %></h3>
+<div class="row">
+  <div class="col-md-7">
+    <h2 class="place_info"><%= @place.name %></h2>
+    <%= (image_tag @place.image.url, class: "profile_image") if @place.image.url.present?%>
+    <p><%= @place.description %></p>
+    <% if current_place == @place %>
+      <h4 class="place_info"><%= @place.email %></h4>
+      <div class="place_info">
+        <%= link_to "アカウント情報の編集", edit_place_registration_path(@place.id), class: "btn btn-info" %>
+      </div>
+    <% end %>
 
-<% unless @rule.start_at.strftime('%H:%M') == '00:00' %>
-  <p>受付開始時間：<%= @rule.start_at.strftime('%H:%M') %></p>
-<% else %>
-  <p>受付開始時間：特に指定なし</p>
-<% end %>
+    <% if current_place == @place %>
+      <h5 class="rules_info">ごみ持ち込みルールは編集画面より記載をお願いします</h5>
+    <% end %>
+    <div class="place_rules">
+      <% if @rule.start_at.present? && @rule.start_at.strftime('%H:%M') != '00:00' %>
+        <p>受付開始時間：<%= @rule.start_at.strftime('%H:%M') %></p>
+      <% else %>
+        <p>受付開始時間：特に指定なし</p>
+      <% end %>
 
-<% unless @rule.end]_at.strftime('%H:%M') == '00:00' %>
-  <p>受付終了時間：<%= @rule.end_at.strftime('%H:%M') %></p>
-<% else %>
-  <p>受付終了時間：特に指定なし</p>
-<% end %>
+      <% if @rule.end_at.present? && @rule.end_at.strftime('%H:%M') != '00:00' %>
+        <p>受付終了時間：<%= @rule.end_at.strftime('%H:%M') %></p>
+      <% else %>
+        <p>受付終了時間：特に指定なし</p>
+      <% end %>
 
-<% if @rule.separation.present? %>
-  <p>分別方法：<%= @rule.separation %></p>
-<% else %>
-  <p>分別方法：特に指定なし</p>
-<% end %>
+      <% if @rule.separation.present? %>
+        <p>分別方法：<%= @rule.separation %></p>
+      <% else %>
+        <p>分別方法：特に指定なし</p>
+      <% end %>
 
-<% if @rule.amount.present? %>
-    <p>ごみの量：<%= @rule.amount %></p>
-<% else %>
-  <p>ごみの量：特に指定なし</p>
-<% end %>
+      <% if @rule.amount.present? %>
+          <p>ごみの量：<%= @rule.amount %></p>
+      <% else %>
+        <p>ごみの量：特に指定なし</p>
+      <% end %>
 
-<% unless @rule.comment.blank? %>
-  <p>注意事項：<%= @rule.comment %></p>
-<% else %>
-  <p>注意事項：特に指定なし</p>
-<% end %>
+      <% unless @rule.comment.blank? %>
+        <p>注意事項：<%= @rule.comment %></p>
+      <% else %>
+        <p>注意事項：特に指定なし</p>
+      <% end %>
+    </div>
+  </div>
 
-<% if current_place == @place %>
-  <h3>ごみ持ち込みルールがあれば編集画面より記載をお願いします</h3>
+  <div class="col-md-5 place_show_links">
+    <div class="place_links">
+      <%= link_to "ごみ回収place一覧", places_path, class: "place_link" %>
+    </div>
+    <div class="place_links">
+      <%= link_to "みんなのごみ拾い記録", blogs_path, class: "place_link" %>
+    </div>
+    <div class="place_links">
+      <%= link_to "イベント一覧", "#", class: "place_link" %>
+    </div>
 
-<%= link_to "アカウント情報の編集", edit_place_registration_path(@place.id) %>|
-
-<%= link_to "#{@place.name}さん参加予定イベント一覧", "#" %>|
-
-<%= link_to "#{@place.name}さん友達一覧", "#" %>
-<% end %>
-
-<div class=user_show_links>
-<%= link_to "#{@place.name}さんのごみ拾い記録", users_path %>
-</div>
-<div class=user_show_links>
-<%= link_to "みんなのごみ拾い記録", blogs_path %>
-</div>
-
-<div class=user_show_links>
-<%= link_to "ごみ回収place一覧", places_path %>
-</div>
-
-<div class=user_show_links>
-<%= link_to "イベント一覧", "#" %>
+    <% if current_place == @place %>
+      <div class="place_links">
+        <%= link_to "#{@place.name}さん参加予定イベント一覧", "#", class: "place_link" %>
+      </div>
+      <div class="place_links">
+        <%= link_to "#{@place.name}さん友達一覧", "#", class: "place_link" %>
+      </div>
+    <% end %>
+  </div>
 </div>

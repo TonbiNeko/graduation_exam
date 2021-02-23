@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions',
                                     passwords: 'users/passwords'}
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    member do
+      get :user_blogs
+    end
+  end
   resources :places, only: [:index, :show] do
     collection do
       get 'search'

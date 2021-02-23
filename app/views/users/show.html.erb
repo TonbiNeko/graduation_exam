@@ -1,27 +1,32 @@
-<h2><%= @user.name %>さんのページ </h2>
-<h3><%= @user.email %></h3>
-<%= image_tag @user.image.url if @user.image.url.present?%>
-
-<div class=user_show_links>
-<%= link_to "アカウント情報の編集", edit_user_registration_path %>
-</div>
-
-<div class=user_show_links>
-<%= link_to "#{@user.name}さんのごみ拾い記録", users_path %>
-</div>
-<div class=user_show_links>
-<%= link_to "みんなのごみ拾い記録", blogs_path %>
-</div>
-
-<div class=user_show_links>
-<%= link_to "参加予定イベント一覧", "#" %>
-</div>
-<div class=user_show_links>
-<%= link_to "ごみ回収place一覧", places_path %>
-</div>
-<div class=user_show_links>
-<%= link_to "友達一覧", "#" %>
-</div>
-<div class=user_show_links>
-<%= link_to "イベント一覧", "#" %>
-</div>
+<ul class="row">
+  <li class="col-md-7">
+    <h2 class="user_info"><%= @user.name %>さんのページ </h2>
+    <h4 class="user_info"><%= @user.email %></h3>
+    <%= image_tag(@user.image.url, class: "user_profle_image") if @user.image.url.present?%>
+    <% if current_user == @user %>
+      <div class="user_info">
+        <%= link_to "アカウント情報の編集", edit_user_registration_path, class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </li>
+  <li class="col-md-5">
+    <div class="user_links">
+      <%= link_to "ごみ回収place一覧", places_path, class: "user_link" %>
+    </div>
+    <div class="user_links">
+      <%= link_to "#{@user.name}さんのごみ拾い記録",  user_blogs_user_path, class: "user_link" %>
+    </div>
+    <div class="user_links">
+      <%= link_to "みんなのごみ拾い記録", blogs_path, class: "user_link" %>
+    </div>
+    <div class="user_links">
+      <%= link_to "参加予定イベント一覧", "#", class: "user_link" %>
+    </div>
+    <div class="user_links">
+      <%= link_to "イベント一覧", "#", class: "user_link" %>
+    </div>
+    <div class="user_links">
+      <%= link_to "友達一覧", "#", class: "user_link" %>
+    </div>
+  </li>
+</ul>
