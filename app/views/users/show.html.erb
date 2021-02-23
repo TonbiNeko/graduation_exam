@@ -2,7 +2,7 @@
   <li class="col-md-7">
     <h2 class="user_info"><%= @user.name %>さんのページ </h2>
     <h4 class="user_info"><%= @user.email %></h3>
-    <%= image_tag @user.image.url if @user.image.url.present?%>
+    <%= image_tag(@user.image.url, class: "user_profle_image") if @user.image.url.present?%>
     <div class="user_info">
       <%= link_to "アカウント情報の編集", edit_user_registration_path, class: "btn btn-info" %>
     </div>

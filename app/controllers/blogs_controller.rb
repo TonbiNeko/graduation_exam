@@ -54,7 +54,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog_images = @blog.blog_images
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id) if current_user
     @comments = @blog.comments
     @comment = @blog.comments.build
   end
