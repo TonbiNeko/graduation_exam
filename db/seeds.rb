@@ -1,50 +1,68 @@
 require 'faker'
 
 User.create!(
-  name: 'bibibi',
-  email: 'bibibi@example.com',
-  password: 'umeboshi',
-  password_confirmation: 'umeboshi'
+  name: "bibibi",
+  email: "bibibi@example.com",
+  password: "umeboshi",
+  password_confirmation: "umeboshi"
 )
 
 Place.create!(
-  email: 'nasu@example.com',
-  address: 'なすけん那須市,那須町',
-  name: 'nasuoyaji',
-  password: 'umeboshi',
-  password_confirmation: 'umeboshi'
-).build_rule(comment: "love my bi").save!
+  email: "nasu@example.com",
+  address: "東京都中央区日本橋横山町７−１９",
+  name: "nasuoyaji",
+  description: "平日午前はごみ拾いした方アイスクリーム半額です",
+  password: "umeboshi",
+  password_confirmation: "umeboshi",
+).build_rule(comment: "びん、カン、燃えるゴミ、燃えないゴミ袋を分けてください").save!
 
-5.times do
+30.times do
   Place.create!(
     email: Faker::Internet.email,
     address: Faker::Address.state,
     name: Faker::Games::Pokemon.name,
     password: 'absolutegarbo',
     password_confirmation: 'absolutegarbo',
-  ).build_rule(comment: "love my bi").save!
+  ).build_rule(comment: "びん、カン、燃えるゴミ、燃えないゴミ袋を分けてください").save!
 end
 
-2.times do
+30.times do
   User.create!(
-    name: Faker::JapaneseMedia::Doraemon.character,
+    name: Faker::JapaneseMedia::Naruto.character,
     email: Faker::Internet.email,
     password: 'umeboshi',
     password_confirmation: 'umeboshi'
   )
 end
 
-User.first.blogs.create!(
-  title: Faker::Games::WorldOfWarcraft.quote,
-  content: "#{Faker::Games::WorldOfWarcraft.quote}
-    #{Faker::Games::WorldOfWarcraft.quote}
-    #{Faker::Games::WorldOfWarcraft.quote}"
-)
+10.times do
+  User.first.blogs.create!(
+    title: Faker::Games::WorldOfWarcraft.quote,
+    content: "#{Faker::JapaneseMedia::StudioGhibli.quote}
+      #{Faker::Games::WorldOfWarcraft.quote}
+      #{Faker::Games::StreetFighter.quote}"
+  )
+end
 
-# blog1 = User.second.blog.new(...)
-# blog1.save!
+10.times do
+  User.second.blogs.create!(
+    title: Faker::Games::WorldOfWarcraft.quote,
+    content: "#{Faker::JapaneseMedia::StudioGhibli.quote}
+      #{Faker::Games::WorldOfWarcraft.quote}
+      #{Faker::Games::StreetFighter.quote}"
+  )
+end
 
-User.first.comments.create!(
+10.times do
+  User.third.blogs.create!(
+    title: Faker::Games::WorldOfWarcraft.quote,
+    content: "#{Faker::JapaneseMedia::StudioGhibli.quote}
+      #{Faker::Games::WorldOfWarcraft.quote}
+      #{Faker::Games::StreetFighter.quote}"
+  )
+end
+
+User.last.comments.create!(
   blog_id: Blog.first.id,
   content: Faker::Games::WorldOfWarcraft.race
 )
