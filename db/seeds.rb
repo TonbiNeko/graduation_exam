@@ -21,6 +21,7 @@ Place.create!(
     email: Faker::Internet.email,
     address: Faker::Address.state,
     name: Faker::Games::Pokemon.name,
+    description: "平日午前はごみ拾いした方アイスクリーム半額です",
     password: 'absolutegarbo',
     password_confirmation: 'absolutegarbo',
   ).build_rule(comment: "びん、カン、燃えるゴミ、燃えないゴミ袋を分けてください").save!
