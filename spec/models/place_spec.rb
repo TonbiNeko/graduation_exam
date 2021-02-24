@@ -4,28 +4,32 @@ describe 'placeモデル機能', type: :model do
   describe 'バリデーションのテスト' do
     context '名前が空の場合' do
       it 'バリデーションにひっかる' do
-        task = Task.new(title: '', content: '失敗テスト')
-        expect(task).not_to be_valid
+        place = Place.new(name: '', email: 'test@example.com', address: "神奈川県横浜市", description: "test", password: "testtest", password_confirmation: "testtest")
+        expect(place).not_to be_valid
       end
     end
-　　context 'Eメールが空の場合' do
+    context 'Eメールが空の場合' do
       it 'バリデーションにひっかかる' do
-        # ここに内容を記載する
+        place = Place.new(name: 'test', email: '', address: "神奈川県横浜市", description: "test", password: "testtest", password_confirmation: "testtest")
+        expect(place).not_to be_valid
       end
     end
     context '住所が空の場合' do
       it 'バリデーションにひっかかる' do
-        # ここに内容を記載する
+        place = Place.new(name: 'test', email: 'test@example.com', address: "", description: "test", password: "testtest", password_confirmation: "testtest")
+        expect(place).not_to be_valid
       end
     end
     context '詳細が100文字以上の場合' do
       it 'バリデーションにひっかかる' do
-        # ここに内容を記載する
+        place = Place.new(name: 'test', email: 'test@example.com', address: "神奈川県横浜市", description: "test" * 100, password: "testtest", password_confirmation: "testtest")
+        expect(place).not_to be_valid
       end
     end
-    context '詳細が空の場合' do
+    context '全て入力した場合' do
       it 'バリデーションが通る' do
-        # ここに内容を記載する
+        place = Place.new(name: 'test', email: 'test@example.com', address: "神奈川県横浜市", description: "test", password: "testtest", password_confirmation: "testtest")
+        expect(place).to be_valid
       end
     end
   end
