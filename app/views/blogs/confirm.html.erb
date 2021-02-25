@@ -4,14 +4,14 @@
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-12 col-md-6">
       <%= image_tag(@blog.image.url, class: "confirm_main_image") if @blog.image && @blog.image.url %>
       <%= form.hidden_field :image_cache %>
       <%= form.hidden_field :title %>
       <%= form.hidden_field :content %>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-12 col-md-6">
       <%= form.submit  "みんなにシェア", class: "btn btn-warning" %>
       <%= form.submit "戻る", name: 'back', class: "btn btn-outline-info" %>
       <div class="card">

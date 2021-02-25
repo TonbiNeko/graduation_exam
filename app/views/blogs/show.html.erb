@@ -73,14 +73,11 @@
       </div>
     <% end %>
     
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+    </div>
 
-    <% if @comments.count > 0 %>
-
-      <div id="comments_area">
-        <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
-      </div>
-    <% end %>
-      <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
     
     <div class="blog_links">
       <%= link_to '一覧画面に戻る', blogs_path, class: "btn btn-success btn-block" %>
