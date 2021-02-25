@@ -1,7 +1,12 @@
 <div class="row">
   <div class="col-md-7">
     <h2 class="place_info"><%= @place.name %></h2>
-    <%= (image_tag @place.image.url, class: "profile_image") if @place.image.url.present?%>
+    <% if @place.image.url.present? %>
+      <%= (image_tag @place.image.url, class: "index_place_image") %>
+    <% else %>
+      <i class="fas fa-camera fa-5x"></i>
+      <p>NO IMAGE<p>
+    <% end %>
     <p><%= @place.description %></p>
     <% if current_place == @place %>
       <h4 class="place_info"><%= @place.email %></h4>

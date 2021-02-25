@@ -1,7 +1,7 @@
 <h2>ごみ回収場所一覧</h2>
 
 <div class="row">
-  <div class="col-sm-3 col-md-3 search_forms">
+  <div class="col-sm-12 col-md-3 search_forms">
     <%= search_form_for @q, url: search_places_path do |f| %>
       <p><i class="fas fa-search"></i><%= f.label :address_cont, '住所' %></p>
       <p><%= f.search_field :address_cont, size: "25x5" %></p>
@@ -12,7 +12,7 @@
       <%= f.submit '検索', class: "btn btn-outline-info btn-block" %>
     <% end %>
   </div>
-  <div class="col-sm-9 col-md-9 place_index_card">
+  <div class="col-sm-12 col-md-9 place_index_card">
     <% @places.each do |place| %>
       <div class="card mb-3" style="max-width: 800px;">
         <div class="row no-gutters">
