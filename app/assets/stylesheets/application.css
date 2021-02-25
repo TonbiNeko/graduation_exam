@@ -61,3 +61,26 @@ header {
 i {
   padding: 5px;
 }
+.photo_by_user_regi {
+  color: black;
+  background-color: blanchedalmond;
+  margin-top: 150px;
+  margin-left: 500px;
+}
+.photo_by_user_session {
+  color: black;
+  background-color: blanchedalmond;
+  margin-top: 250px;
+  margin-left: 500px;
+}
+.photo_by_place_session {
+  color: black;
+  background-color: blanchedalmond;
+  margin-top: 250px;
+  margin-left: 500px;
+}
+.photo_by_place_regi {
+  color: black;
+  background-color: blanchedalmond;
+  margin-left: 530px;
+}
