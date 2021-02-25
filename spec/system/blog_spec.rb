@@ -108,7 +108,7 @@ describe 'ごみ拾いブログ投稿機能', type: :system do
       end
     end
     context 'ユーザーがコメントを編集した場合' do
-      it 'そのコメントが削除される' do
+      it 'そのコメントが編集される' do
         fill_in "comment[content]", with: "コメントしました"
         click_on "登録する"
         click_on "コメント編集"
