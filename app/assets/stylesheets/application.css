@@ -29,6 +29,8 @@ footer {
   color: white;
   margin-top: 20px;
   padding: 10px;
+  position: relative;
+  bottom: 0;
 }
 li {
   list-style: none;
