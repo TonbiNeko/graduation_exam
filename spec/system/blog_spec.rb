@@ -112,9 +112,10 @@ describe 'ごみ拾いブログ投稿機能', type: :system do
         fill_in "comment[content]", with: "コメントしました"
         click_on "登録する"
         click_on "コメント編集"
-        fill_in "comment[content]", with: "コメント編集しました", match: :first
+        sleep(3)
+        fill_in "comment[content]", with: "コメント編集されました", match: :first
         click_on "更新する"
-        expect(page).to have_content "コメント編集しました"
+        expect(page).to have_content "コメント編集されました"
       end
     end
   end
